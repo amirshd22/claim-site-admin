@@ -3,7 +3,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
+import { useLogin } from "../stores";
 const Header: React.FC = () => {
+  const isLoggedIn = useLogin((state) => state.isLoggedIn);
+  const logout = () => {
+    localStorage.removeItem("userInfo");
+    window.location.reload();
+  };
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -16,14 +22,16 @@ const Header: React.FC = () => {
                 <Nav.Link>خانه</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/withdrawals">
-                <Nav.Link>پرداخت شده ها</Nav.Link>
+                <Nav.Link>پرداختی ها</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/global">
-                <Nav.Link>اطالاعات کلی سایت</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/contacts">
+
+              <LinkContainer to="/messages">
                 <Nav.Link>پیام ها</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/faqs">
+                <Nav.Link>سوالات متداول</Nav.Link>
+              </LinkContainer>
+              {isLoggedIn && <Nav.Link onClick={logout}>خروج</Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>

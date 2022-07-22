@@ -55,11 +55,14 @@ const WithdrawScreen: React.FC = () => {
   const payThis = () => {};
 
   return loading ? (
-    <>Loading...</>
+    <div>Loading...</div>
   ) : (
     <Screen>
       <div className="d-flex mt-5">
-        <Button onClick={() => fetchWithdraws("createdAt", "page=1")}>
+        <Button
+          className="ms-1"
+          onClick={() => fetchWithdraws("createdAt", "page=1")}
+        >
           قدیم به جدید
         </Button>
         <Button onClick={() => fetchWithdraws("-createdAt", "page=1")}>
@@ -77,7 +80,7 @@ const WithdrawScreen: React.FC = () => {
         </thead>
         <tbody>
           {withdraws.map((w) => (
-            <tr>
+            <tr key={w.id}>
               <th>{w.profile.telegram_id}</th>
               <th>
                 <NumberFormat
@@ -125,7 +128,7 @@ const WithdrawScreen: React.FC = () => {
           onClick={() => fetchWithdraws(sorting, "page=1")}
           size="sm"
         >
-          صحفه اول
+          صفحه اول
         </Button>
         <Button
           variant="outline-dark"
@@ -146,7 +149,7 @@ const WithdrawScreen: React.FC = () => {
           onClick={() => fetchWithdraws(sorting, last)}
           size="sm"
         >
-          صحفه آخر
+          صفحه آخر
         </Button>
       </div>
     </Screen>

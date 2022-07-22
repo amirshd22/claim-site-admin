@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import FAQScreen from "./screens/FAQScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
+import MessagesScreen from "./screens/MessagesScreen";
 import WithdrawScreen from "./screens/WithdrawScreen";
 import { useLogin } from "./stores";
 
@@ -28,6 +30,8 @@ const App: React.FC = () => {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/withdrawals" element={<WithdrawScreen />} />
+          <Route path="/messages" element={<MessagesScreen />} />
+          <Route path="/faqs" element={<FAQScreen />} />
         </Routes>
       </Router>
     </div>
