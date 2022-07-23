@@ -14,24 +14,24 @@ const Header: React.FC = () => {
     <header>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand>پنل ادمین ویدرکش</Navbar.Brand>
+          <Navbar.Brand> VadeCash admin</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <LinkContainer to="/">
-                <Nav.Link>خانه</Nav.Link>
+                <Nav.Link>Home</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/withdrawals">
-                <Nav.Link>پرداختی ها</Nav.Link>
+                <Nav.Link> Claims</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/messages">
-                <Nav.Link>پیام ها</Nav.Link>
+                <Nav.Link> Messages</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/faqs">
-                <Nav.Link>سوالات متداول</Nav.Link>
+                <Nav.Link> FAQ</Nav.Link>
               </LinkContainer>
-              {isLoggedIn && <Nav.Link onClick={logout}>خروج</Nav.Link>}
+              {isLoggedIn && <Nav.Link onClick={logout}>Logout</Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>

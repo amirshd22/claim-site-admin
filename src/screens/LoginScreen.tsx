@@ -45,30 +45,30 @@ const LoginScreen: React.FC = () => {
         <Card.Body>
           <Form onSubmit={submitHandler}>
             <Form.Group>
-              <Form.Label>نام کاربری</Form.Label>
+              <Form.Label>username </Form.Label>
               <Form.Control
                 required
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setUsername(e.target.value)
                 }
                 type="text"
-                placeholder="نام کاربری"
+                placeholder=" username"
               />
             </Form.Group>
 
             <Form.Group className="mt-3" controlId="formBasicPassword">
-              <Form.Label>رمزعبور</Form.Label>
+              <Form.Label>password</Form.Label>
               <Form.Control
                 required
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setPassword(e.target.value)
                 }
                 type="password"
-                placeholder="رمزعبور"
+                placeholder="password"
               />
             </Form.Group>
             <Button className="w-100 mt-3" type="submit" disabled={loading}>
-              {loading ? "در حال انجام" : "ورود به سایت"}
+              {loading ? "loading..." : "login  "}
             </Button>
           </Form>
         </Card.Body>
