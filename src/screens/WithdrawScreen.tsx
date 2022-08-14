@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Screen from "../components/Screen";
-import { getWithdraws } from "../service";
+import { getWithdraws, pay } from "../service";
 import { useLogin, useWithdraw } from "../stores";
 import { getPageNumber } from "../utils/getPageNumber";
 import Table from "react-bootstrap/Table";
@@ -52,7 +52,16 @@ const WithdrawScreen: React.FC = () => {
     navigator.clipboard.writeText(text);
   };
 
-  const payThis = () => {};
+  const payThis = async (profileId: string, withdrawId: string) => {
+    try {
+      const data = await pay(access, withdrawId, profileId);
+      if (data) {
+        fetchWithdraws("-createdAt", "page=1");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return loading ? (
     <div>Loading...</div>
@@ -113,7 +122,7 @@ const WithdrawScreen: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline-dark w-100"
-                  onClick={payThis}
+                  onClick={() => payThis(w.profile.id, w.id)}
                 >
                   پرداخت
                 </Button>
