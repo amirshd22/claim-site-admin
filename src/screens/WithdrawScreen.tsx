@@ -56,7 +56,7 @@ const WithdrawScreen: React.FC = () => {
     try {
       const data = await pay(access, withdrawId, profileId);
       if (data) {
-        fetchWithdraws("-createdAt", "page=1");
+        setWithdraws(withdraws.filter((w) => w.id !== withdrawId));
       }
     } catch (error) {
       console.log(error);
